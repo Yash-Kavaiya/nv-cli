@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "nvcli"
+version = "0.1.0"
+description = "NVIDIA-powered terminal coding agent — like Claude Code but for NVIDIA's API"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+keywords = ["nvidia", "ai", "cli", "coding-agent", "llm"]
+dependencies = [
+    "typer[all]>=0.12",
+    "openai>=1.30",
+    "rich>=13.0",
+    "prompt-toolkit>=3.0",
+    "textual>=0.60",
+    "pydantic-settings>=2.0",
+    "pyyaml>=6.0",
+    "aiofiles>=23.0",
+    "gitpython>=3.1",
+]
+
+[project.scripts]
+nv = "nvcli.main:app"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23", "respx>=0.21", "httpx>=0.27"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["nvcli"]
