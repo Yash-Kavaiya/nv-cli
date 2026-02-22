@@ -119,3 +119,6 @@ venv/
 # custom
 nvcli/__pycache__/
 
+
+# Claude Code internals
+.claude/
